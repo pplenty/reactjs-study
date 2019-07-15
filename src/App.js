@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Keyword from "./view/Keyword";
+import { Button } from 'antd/lib/radio';
 
 function App() {
   return (
@@ -19,6 +20,11 @@ function App() {
 }
 
 class Home extends Component {
+  state = {
+    data: [],
+    isOpen: false,
+    canFly: true,
+  };
 
   // Mounting
   constructor(props) {
@@ -41,7 +47,17 @@ class Home extends Component {
     console.log('componentWillMount');
   }
 
-  test(props) {
+  test = () => {
+    console.log(this.state.isOpen);
+
+    this.setState(
+      {
+        isOpen: true,
+        data: [1, 2, 3],
+      }
+    );
+    console.log(this.state.isOpen);
+
     console.log('test');
   }
 
@@ -50,7 +66,7 @@ class Home extends Component {
     return <>
       <h2>Home</h2>
       <div>
-        <input type='button' value='1atsetaset23' onClick={this.test} />
+        <Button onClick={this.test}>TEST</Button>
       </div>
     </>;
   }
@@ -61,16 +77,17 @@ class Home extends Component {
 
   // Updating
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("shouldComponentUpdate: " + JSON.stringify(nextProps) + " " + JSON.stringify(nextState));
+    console.log("shouldComponentUpdate: " + JSON.stringify(nextProps, null, 2) + " " + JSON.stringify(nextState, null, 2));
     return true;
   }
 
   componentWillUpdate(nextProps, nextState) {
-    console.log("componentWillUpdate: " + JSON.stringify(nextProps) + " " + JSON.stringify(nextState));
+    console.log("componentWillUpdate: " + JSON.stringify(nextProps, null, 2) + " " + JSON.stringify(nextState, null, 2));
   }
-  
+
   componentDidUpdate(prevProps, prevState) {
-    console.log("componentDidUpdate: " + JSON.stringify(prevProps) + " " + JSON.stringify(prevState));
+    console.log(prevState.isOpen);
+    console.log("componentDidUpdate: " + JSON.stringify(prevProps, null, 2) + " " + JSON.stringify(prevState, null, 2));
   }
 
   // Unmounting
