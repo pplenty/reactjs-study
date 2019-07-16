@@ -1,0 +1,12 @@
+$tableWidth: 300px;
+$position: relative;
+
+.table-ranking {
+  position: relative;
+  top: 10px;
+  left: 25%;
+  width: $tableWidth;
+  td.money {
+    text-align: right;
+  }
+}

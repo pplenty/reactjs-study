@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import RankTable from './RankTable';
 import 'antd/dist/antd.css';
+import './keyword.scss';
 
 const { Header, Footer, Sider, Content } = Layout;
-
 class Keyword extends Component {
   render() {
     return <Layout>
